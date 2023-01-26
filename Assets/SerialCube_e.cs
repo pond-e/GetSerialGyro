@@ -10,13 +10,6 @@ public class SerialCube_e : MonoBehaviour
 	public Text text;
 	public GameObject cube;
 
-	private float[] q_before = new float[4] { 0, 0, 0, 1 };
-	private float[] q = new float[4];
-
-	private float dt = 0.1f;
-
-	private float[] r_tmp = new float[3];
-
 	// Use this for initialization
 	void Start()
 	{
