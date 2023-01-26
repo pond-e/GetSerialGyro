@@ -40,30 +40,12 @@ public class SerialCube : MonoBehaviour
 			string[] angles = message.Split(',');
 			text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n"; // シリアルの値をテキストに表示
 
-			// Vectorは前から順番にx,y,zだけど、そのままセットすると
-			// Unity上の回転の見た目が変になるので、y,zの値を入れ替えている。
-			//Vector3 angle = new Vector3(float.Parse(angles[0]), float.Parse(angles[2]), float.Parse(angles[1]));
-			//cube.transform.rotation = Quaternion.Euler(angle);
 
+			// 取得した角速度をオイラー角に変換する
 			float x_value = -1.0f * float.Parse(angles[0]);
 			float y_value = float.Parse(angles[1]);
 			float z_value = float.Parse(angles[2]); // 右手系と左手系
 
-			/*
-			float[] w = { x_value, y_value, z_value };
-
-			float[] q_tmp = new float[4];
-			q_tmp = find_q(w_times_q(w, q_before), dt);
-			q[0] = q_before[0] + q_tmp[0];
-			q[1] = q_before[1] + q_tmp[1];
-			q[2] = q_before[2] + q_tmp[2];
-			q[3] = q_before[3] + q_tmp[3];
-
-			q_before = q;
-
-			Vector3 angle = new Vector3(q[0], q[1], q[2]);
-			this.transform.rotation = Quaternion.AngleAxis(q[3], angle);
-			*/
 
 			r_tmp = find_r(y_value, z_value, x_value);
 			Vector3 angle = new Vector3(cube.transform.localEulerAngles.x + r_tmp[0], cube.transform.localEulerAngles.y + r_tmp[1], cube.transform.localEulerAngles.z + r_tmp[2]);

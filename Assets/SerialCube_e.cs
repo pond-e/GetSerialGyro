@@ -38,6 +38,7 @@ public class SerialCube_e : MonoBehaviour
 		try
 		{
 			string[] angles = message.Split(',');
+			// MPU9250のDMPからオイラー角を取得して使用するスクリプト
 			text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "z:"; // シリアルの値をテキストに表示
 
 			// Vectorは前から順番にx,y,zだけど、そのままセットすると

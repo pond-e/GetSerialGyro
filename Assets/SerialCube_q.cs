@@ -50,8 +50,8 @@ public class SerialCube_q : MonoBehaviour
 			float y_value = float.Parse(angles[1]);
 			float z_value = float.Parse(angles[2]); // âEéËånÇ∆ç∂éËån
 			*/
-			Vector3 angle = new Vector3(float.Parse(angles[1]), -1.0f*float.Parse(angles[3]), float.Parse(angles[2]));
-			cube.transform.rotation = Quaternion.AngleAxis(180f*float.Parse(angles[0]), angle);
+			Vector3 angle = new Vector3(Mathf.Sqrt(1.0f - Mathf.Pow(float.Parse(angles[1]), 2)), Mathf.Sqrt(1.0f - Mathf.Pow(-1.0f*float.Parse(angles[3]), 2)), Mathf.Sqrt(1.0f - Mathf.Pow(float.Parse(angles[2]), 2)));
+			cube.transform.rotation = Quaternion.AngleAxis(180f * float.Parse(angles[0]), angle);
 		}
 		catch (System.Exception e)
 		{
