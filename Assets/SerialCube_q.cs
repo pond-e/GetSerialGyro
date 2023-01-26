@@ -10,13 +10,6 @@ public class SerialCube_q : MonoBehaviour
 	public Text text;
 	public GameObject cube;
 
-	private float[] q_before = new float[4] { 0, 0, 0, 1 };
-	private float[] q = new float[4];
-
-	private float dt = 0.1f;
-
-	private float[] r_tmp = new float[3];
-
 	// Use this for initialization
 	void Start()
 	{
@@ -38,12 +31,8 @@ public class SerialCube_q : MonoBehaviour
 		try
 		{
 			string[] angles = message.Split(',');
+			// MPU9250のDMPからクォータニオンを取得して使用することを目指すスクリプト
 			text.text = "w:" + angles[0] + "\n" + "x:" + angles[1] + "\n" + "y:" + angles[2] + "\n" + "z:" + angles[3] + "\n"; // シリアルの値をテキストに表示
-
-			// Vectorは前から順番にx,y,zだけど、そのままセットすると
-			// Unity上の回転の見た目が変になるので、y,zの値を入れ替えている。
-			//Vector3 angle = new Vector3(float.Parse(angles[0]), float.Parse(angles[2]), float.Parse(angles[1]));
-			//cube.transform.rotation = Quaternion.Euler(angle);
 
 			/*
 			float x_value = -1.0f * float.Parse(angles[0]);
